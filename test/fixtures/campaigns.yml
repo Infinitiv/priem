@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  year_start: 1
+  year_end: 1
+  education_form: 
+  status: 
+  education_level: 
+  campaign_date: 
+
+two:
+  name: MyString
+  year_start: 1
+  year_end: 1
+  education_form: 
+  status: 
+  education_level: 
+  campaign_date: 

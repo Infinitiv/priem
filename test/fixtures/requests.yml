@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  query: 
+  input: MyText
+  output: MyText
+
+two:
+  query: 
+  input: MyText
+  output: MyText

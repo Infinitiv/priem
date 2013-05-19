@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Query.create([{name: 'checkapplication'}, {name: 'delete'}, {name: 'delete/result'}, {name: 'dictionary'}, {name: 'dictionarydetails'}, {name: 'import'}, {name: 'import/result'}, {name: 'validate'}, {name: 'institutioninfo'}, {name: 'test/checkapplication'}, {name: 'test/delete'}, {name: 'test/dictionary'}, {name: 'test/dictionarydetails'}, {name: 'test/import'}])

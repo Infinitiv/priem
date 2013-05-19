@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<table>
+  <tr>
+    <th>
+      Input:
+</th>
+<th>
+Output:
+</th>
+</tr>
+<tr>
+<td>
+<pre>
+  <%= @request.input %>
+</pre>
+</td>
+<td>
+<pre>
+  <%= @request.output %>
+</pre>
+</td>
+</tr>
+</table>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

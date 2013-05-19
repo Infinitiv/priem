@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  course: 1
+  education_level: 
+  education_form: 
+  education_source: 
+  stage: 1
+  date_start: 2013-03-12
+  date_end: 2013-03-12
+  date_order: 2013-03-12
+
+two:
+  course: 1
+  education_level: 
+  education_form: 
+  education_source: 
+  stage: 1
+  date_start: 2013-03-12
+  date_end: 2013-03-12
+  date_order: 2013-03-12
