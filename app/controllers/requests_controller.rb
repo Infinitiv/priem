@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   require 'builder'
+  require 'net/http'
   # GET /requests
   # GET /requests.json
   def index
@@ -94,7 +95,10 @@ class RequestsController < ApplicationController
   def data(method)
     case method
     when '/dictionary'
-      AuthData.first.to_xml(only: [:login, :pass], camelize: true, skip_types: true, skip_instruct: true)
+      data = Builder::XmlMarkup.new(indent: 2)
+      data.Root do |root|
+        auth_data(root)
+      end
     when '/institutioninfo'
       AuthData.first.to_xml(only: [:login, :pass], camelize: true, skip_types: true, skip_instruct: true)
     when '/validate'
@@ -103,6 +107,7 @@ class RequestsController < ApplicationController
         auth_data(root)
         data.PackageData do |pd|
           campaign_info(pd)
+	  admission_info(pd)
         end
       end
     when '/test/import'
