@@ -100,7 +100,10 @@ class RequestsController < ApplicationController
         auth_data(root)
       end
     when '/institutioninfo'
-      AuthData.first.to_xml(only: [:login, :pass], camelize: true, skip_types: true, skip_instruct: true)
+      data = Builder::XmlMarkup.new(indent: 2)
+      data.Root do |root|
+        auth_data(root)
+      end
     when '/validate'
       data = Builder::XmlMarkup.new(indent: 2)
       data.Root do |root|
@@ -111,7 +114,14 @@ class RequestsController < ApplicationController
         end
       end
     when '/test/import'
-      AuthData.first.to_xml(only: [:login, :pass], camelize: true, skip_types: true, skip_instruct: true) + '<PackageData>' + '<CampaignInfo>' + Campaign.all.to_xml(skip_instruct: true, camelize: true, :skip_types => true, :except => ['updated_at', 'created_at'], :include => {:campaign_dates => {:skip_types => true, camelize: true, :except => ['updated_at', 'created_at', 'campaign_id']}}) + '</CampaignInfo>' + '</PackageData>'
+      data = Builder::XmlMarkup.new(indent: 2)
+      data.Root do |root|
+        auth_data(root)
+        data.PackageData do |pd|
+          campaign_info(pd)
+	  admission_info(pd)
+        end
+      end
     end
   end
 
@@ -171,7 +181,88 @@ class RequestsController < ApplicationController
   end
 
   def admission_info(root)
-    
+    admission_info = Builder::XmlMarkup.new(indent: 2)
+    @c = AdmissionVolume.all
+    root.AdmissionInfo do |ai|
+      ai.AdmissionVolume do |av|
+	@c.each do |cm|
+	  av.Item do |i|
+	    i.UID cm.id
+	    i.CampaignUID cm.campaign_id
+	    i.EducationLevelID cm.education_level_id
+	    i.Course cm.course
+	    i.DirectionID cm.direction_id
+	    i.NumberBudgetO cm.number_budget_o if cm.number_budget_o
+	    i.NumberBudgetOZ cm.number_budget_oz if cm.number_budget_oz
+	    i.NumberBudgetZ cm.number_budget_z if cm.number_budget_z
+	    i.NumberPaidO cm.number_paid_o if cm.number_paid_o
+	    i.NumberPaidOZ cm.number_paid_oz if cm.number_paid_oz
+	    i.NumberPaidZ cm.number_paid_z if cm.number_paid_z
+	  end
+	end
+      end
+      ai.CompetitiveGroups do |cgs|
+	@c = CompetitiveGroup.all 
+	@c.each do |cm|
+	  cgs.CompetitiveGroup do |cg|
+	    cg.UID cm.id
+	    cg.CampaignUID cm.campaign_id
+	    cg.Course cm.course
+	    cg.Name cm.name
+	    cg.Items do |i|
+	      cm.competitive_group_items.each do |cgim|
+		i.CompetitiveGroupItem do |cgi|
+		  cgi.UID cgim.id
+		  cgi.EducationLevelID cgim.education_level_id
+		  cgi.DirectionID cgim.direction_id
+		  cgi.NumberBudgetO cgim.number_budget_o if cgim.number_budget_o
+		  cgi.NumberBudgetOZ cgim.number_budget_oz if cgim.number_budget_oz
+		  cgi.NumberBudgetZ cgim.number_budget_z if cgim.number_budget_z
+		  cgi.NumberPaidO cgim.number_paid_o if cgim.number_paid_o
+		  cgi.NumberPaidOZ cgim.number_paid_oz if cgim.number_paid_oz
+		  cgi.NumberPaidZ cgim.number_paid_z if cgim.number_paid_z
+		end
+	      end
+	    end
+	      cm.target_organizations.each do |tom|
+		cg.TargetOrganizations do |tos|
+		  tos.TargetOrganization do |to|
+		    to.UID tom.id
+		    to.TargetOrganizationName tom.target_organization_name
+		    tom.comptititve_group_target_items.each do |cgtim|  
+		      to.Items do |i|
+			i.CompetitiveGroupTargetItem do |cgti|
+			  cgti.UID cgtim.id
+			  cgti.EducationLevelID cgtim.education_level
+			  cgti.NumberTargetO cgtim.number_target_o if cgtim.number_target_o
+			  cgti.NumberTargetOZ cgtim.number_target_oz if cgtim.number_target_oz
+			  cgti.NumberTargetZ cgtim.number_target_z if cgtim.number_target_z
+			  cgti.DirectionID cgtim.direction_id
+			end
+		      end
+		    end
+		  end
+		end
+	      end
+	      cm.entrance_test_items.each do |etim|
+		cg.EntranceTestItems do |etis|
+		  etis.EntranceTestItem do |eti|
+		    eti.UID etim.id
+		    eti.EntranceTestTypeID etim.entrance_test_type_id
+		    eti.Form etim.form
+		    eti.MinScore etim.min_score
+		    etim.entrance_test_subjects.each do |esm|
+		      eti.EntranceTestSubject do |es|
+			es.SubjectID esm.subject_id
+		      end
+		    end
+		  end
+		end
+	      end
+	  end
+	end
+      end
+    end
   end
 
   def applications(root)

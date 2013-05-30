@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  entrance_test_type_id: 1
+  form: MyString
+  min_score: 1
+
+two:
+  entrance_test_type_id: 1
+  form: MyString
+  min_score: 1

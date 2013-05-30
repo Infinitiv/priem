@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  competitive_group: 
+  education_level_id: 1
+  direction_id: 1
+  number_budget_o: 1
+  number_budget_oz: 1
+  number_budget_z: 1
+  number_paid_o: 1
+  number_paid_oz: 1
+  number_paid_z: 1
+  number_target_o: 1
+  number_target_oz: 1
+  number_target_z: 1
+
+two:
+  competitive_group: 
+  education_level_id: 1
+  direction_id: 1
+  number_budget_o: 1
+  number_budget_oz: 1
+  number_budget_z: 1
+  number_paid_o: 1
+  number_paid_oz: 1
+  number_paid_z: 1
+  number_target_o: 1
+  number_target_oz: 1
+  number_target_z: 1

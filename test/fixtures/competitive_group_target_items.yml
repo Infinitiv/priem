@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  target_organization: 
+  education_level: 1
+  number_target_o: 1
+  number_target_oz: 1
+  number_target_z: 1
+  direction_id: 1
+
+two:
+  target_organization: 
+  education_level: 1
+  number_target_o: 1
+  number_target_oz: 1
+  number_target_z: 1
+  direction_id: 1
