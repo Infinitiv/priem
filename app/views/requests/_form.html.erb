@@ -15,7 +15,17 @@
     <%= f.label :query %><br />
     <%= f.select :query_id, options_for_select(@queries.collect {|p| [p.name, p.id]}), :include_blank => '' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="dictionary hidden">
+    <%= label_tag :dictionary %><br />
+    <%= select_tag :dictionary_id, options_for_select(@dictionaries.collect {|p| [p['Name'], p['Code']]}), :include_blank => '' %>
+  </div>
+  <div class="checkboxes">
+
+    <%= label_tag 'campaign_info', check_box_tag('campaign_info') + "Сведения о приемной кампании", :class => "checkbox" %><br />
+    <%= label_tag 'admission_info', check_box_tag('admission_info') + 'Сведения об объеме и структуре приема', :class => "checkbox" %><br />
+    <%= label_tag 'applications', check_box_tag('applications') + 'Сведения о заявлениях', :class => "checkbox" %><br />
+  </div>
+  <div class="submit">
+    <%= f.submit 'Отправить запрос', :class => "btn" %>
   </div>
 <% end %>

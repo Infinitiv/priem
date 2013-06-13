@@ -28,6 +28,7 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new
     @queries = Query.all
+    @dictionaries = dictionaries
 
     respond_to do |format|
       format.html # new.html.erb
@@ -99,6 +100,14 @@ class RequestsController < ApplicationController
       data.Root do |root|
         auth_data(root)
       end
+    when '/dictionarydetails'
+      data = Builder::XmlMarkup.new(indent: 2)
+      data.Root do |root|
+      auth_data(root)
+	data.GetDictionaryContent do |gdc|
+	  gdc.DictionaryCode params[:dictionary_id]
+	end
+    end
     when '/institutioninfo'
       data = Builder::XmlMarkup.new(indent: 2)
       data.Root do |root|
@@ -109,8 +118,8 @@ class RequestsController < ApplicationController
       data.Root do |root|
         auth_data(root)
         data.PackageData do |pd|
-          campaign_info(pd)
-	  admission_info(pd)
+          campaign_info(pd) if params[:campaign_info]
+	  admission_info(pd) if params[:admission_info]
         end
       end
     when '/test/import'
@@ -272,4 +281,19 @@ class RequestsController < ApplicationController
   def order_of_admission(root)
     
   end
+  
+  def dictionaries
+    method = '/dictionary'
+    request = data(method)
+    uri = URI.parse('http://priem.edu.ru:8000/import/importservice.svc')
+    http = Net::HTTP.new(uri.host, uri.port)
+    headers = {'Content-Type' => 'text/xml'}
+    response = http.post(uri.path + method, request, headers)
+    h = Hash.from_xml response.body
+    dictionaries = Hash.new
+    h['Dictionaries']['Dictionary'].each do |d|
+      dictionaries[d['Code']] = d['Name']
+    end
+  end
+  
 end
