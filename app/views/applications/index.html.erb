@@ -1,0 +1,86 @@
+<h1>Listing applications</h1>
+
+<%= link_to 'New Application', new_application_path %>
+<table>
+  <tr>
+    <th>Application number</th>
+    <th>Identity document type</th>
+    <th>Document series</th>
+    <th>Document number</th>
+    <th>Document date</th>
+    <th>Entrant last name</th>
+    <th>Entrant first name</th>
+    <th>Entrant middle name</th>
+    <th>Russian</th>
+    <th>Chemistry</th>
+    <th>Biology</th>
+    <th>Target organization</th>
+    <th>Nationality type</th>
+    <th>Gender</th>
+    <th>Birth date</th>
+    <th>Edu document type</th>
+    <th>Document series</th>
+    <th>Edu document number</th>
+    <th>Document date</th>
+    <th>Need hostel</th>
+    <th>Lech budget</th>
+    <th>Ped budget</th>
+    <th>Stomat budget</th>
+    <th>Lech paid</th>
+    <th>Ped paid</th>
+    <th>Stomat paid</th>
+    <th>Original received</th>
+    <th>Registration date</th>
+    <th>Last dany day</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @applications.each do |application| %>
+  <tr>
+    <td><%= application.application_number %></td>
+    <td><%= application.identity_document_type_id %></td>
+    <td><%= application.document_series %></td>
+    <td><%= application.document_number %></td>
+    <td><%= application.document_date %></td>
+    <td><%= application.entrant_last_name %></td>
+    <td><%= application.entrant_first_name %></td>
+    <td><%= application.entrant_middle_name %></td>
+    <td><%= application.russian %></td>
+    <td><%= application.chemistry %></td>
+    <td><%= application.biology %></td>
+    <td><%= application.target_organization_id %></td>
+    <td><%= application.nationality_type_id %></td>
+    <td><%= application.gender_id %></td>
+    <td><%= application.birth_date %></td>
+    <td><%= application.edu_document_type_id %></td>
+    <td><%= application.document_series %></td>
+    <td><%= application.edu_document_number %></td>
+    <td><%= application.document_date %></td>
+    <td><%= application.need_hostel %></td>
+    <td><%= application.lech_budget %></td>
+    <td><%= application.ped_budget %></td>
+    <td><%= application.stomat_budget %></td>
+    <td><%= application.lech_paid %></td>
+    <td><%= application.ped_paid %></td>
+    <td><%= application.stomat_paid %></td>
+    <td><%= application.original_received %></td>
+    <td><%= application.registration_date %></td>
+    <td><%= application.last_dany_day %></td>
+    <td><%= application.status_id %></td>
+    <td><%= link_to 'Show', application %></td>
+    <td><%= link_to 'Edit', edit_application_path(application) %></td>
+    <td><%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<h2>Import Applications</h2>
+
+<%= form_tag import_applications_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+

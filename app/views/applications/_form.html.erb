@@ -1,0 +1,137 @@
+<%= form_for(@application) do |f| %>
+  <% if @application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+      <% @application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :application_number %><br />
+    <%= f.number_field :application_number %>
+  </div>
+  <div class="field">
+    <%= f.label :identity_document_type_id %><br />
+    <%= f.number_field :identity_document_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :document_series %><br />
+    <%= f.text_field :document_series %>
+  </div>
+  <div class="field">
+    <%= f.label :document_number %><br />
+    <%= f.text_field :document_number %>
+  </div>
+  <div class="field">
+    <%= f.label :document_date %><br />
+    <%= f.date_select :document_date %>
+  </div>
+  <div class="field">
+    <%= f.label :entrant_last_name %><br />
+    <%= f.text_field :entrant_last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :entrant_first_name %><br />
+    <%= f.text_field :entrant_first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :entrant_middle_name %><br />
+    <%= f.text_field :entrant_middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label :russian %><br />
+    <%= f.number_field :russian %>
+  </div>
+  <div class="field">
+    <%= f.label :chemistry %><br />
+    <%= f.number_field :chemistry %>
+  </div>
+  <div class="field">
+    <%= f.label :biology %><br />
+    <%= f.number_field :biology %>
+  </div>
+  <div class="field">
+    <%= f.label :target_organization_id %><br />
+    <%= f.number_field :target_organization_id %>
+  </div>
+  <div class="field">
+    <%= f.label :nationality_type_id %><br />
+    <%= f.number_field :nationality_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :gender_id %><br />
+    <%= f.number_field :gender_id %>
+  </div>
+  <div class="field">
+    <%= f.label :birth_date %><br />
+    <%= f.date_select :birth_date %>
+  </div>
+  <div class="field">
+    <%= f.label :edu_document_type_id %><br />
+    <%= f.number_field :edu_document_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :document_series %><br />
+    <%= f.text_field :document_series %>
+  </div>
+  <div class="field">
+    <%= f.label :edu_document_number %><br />
+    <%= f.text_field :edu_document_number %>
+  </div>
+  <div class="field">
+    <%= f.label :document_date %><br />
+    <%= f.number_field :document_date %>
+  </div>
+  <div class="field">
+    <%= f.label :need_hostel %><br />
+    <%= f.check_box :need_hostel %>
+  </div>
+  <div class="field">
+    <%= f.label :lech_budget %><br />
+    <%= f.check_box :lech_budget %>
+  </div>
+  <div class="field">
+    <%= f.label :ped_budget %><br />
+    <%= f.check_box :ped_budget %>
+  </div>
+  <div class="field">
+    <%= f.label :stomat_budget %><br />
+    <%= f.check_box :stomat_budget %>
+  </div>
+  <div class="field">
+    <%= f.label :lech_paid %><br />
+    <%= f.check_box :lech_paid %>
+  </div>
+  <div class="field">
+    <%= f.label :ped_paid %><br />
+    <%= f.check_box :ped_paid %>
+  </div>
+  <div class="field">
+    <%= f.label :stomat_paid %><br />
+    <%= f.check_box :stomat_paid %>
+  </div>
+  <div class="field">
+    <%= f.label :original_received %><br />
+    <%= f.check_box :original_received %>
+  </div>
+  <div class="field">
+    <%= f.label :registration_date %><br />
+    <%= f.date_select :registration_date %>
+  </div>
+  <div class="field">
+    <%= f.label :last_dany_day %><br />
+    <%= f.date_select :last_dany_day %>
+  </div>
+  <div class="field">
+    <%= f.label :status_id %><br />
+    <%= f.number_field :status_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

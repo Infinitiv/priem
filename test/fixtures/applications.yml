@@ -1,0 +1,65 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  application_number: 1
+  identity_document_type_id: 1
+  document_series: MyString
+  document_number: MyString
+  document_date: 2013-06-24
+  entrant_last_name: MyString
+  entrant_first_name: MyString
+  entrant_middle_name: MyString
+  russian: 1
+  chemistry: 1
+  biology: 1
+  target_organization_id: 1
+  nationality_type_id: 1
+  gender_id: 1
+  birth_date: 2013-06-24
+  edu_document_type_id: 1
+  document_series: MyString
+  edu_document_number: MyString
+  document_date: 1
+  need_hostel: false
+  lech_budget: false
+  ped_budget: false
+  stomat_budget: false
+  lech_paid: false
+  ped_paid: false
+  stomat_paid: false
+  original_received: false
+  registration_date: 2013-06-24
+  last_dany_day: 2013-06-24
+  status_id: 1
+
+two:
+  application_number: 1
+  identity_document_type_id: 1
+  document_series: MyString
+  document_number: MyString
+  document_date: 2013-06-24
+  entrant_last_name: MyString
+  entrant_first_name: MyString
+  entrant_middle_name: MyString
+  russian: 1
+  chemistry: 1
+  biology: 1
+  target_organization_id: 1
+  nationality_type_id: 1
+  gender_id: 1
+  birth_date: 2013-06-24
+  edu_document_type_id: 1
+  document_series: MyString
+  edu_document_number: MyString
+  document_date: 1
+  need_hostel: false
+  lech_budget: false
+  ped_budget: false
+  stomat_budget: false
+  lech_paid: false
+  ped_paid: false
+  stomat_paid: false
+  original_received: false
+  registration_date: 2013-06-24
+  last_dany_day: 2013-06-24
+  status_id: 1

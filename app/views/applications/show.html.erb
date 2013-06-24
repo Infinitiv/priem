@@ -1,0 +1,155 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Application number:</b>
+  <%= @application.application_number %>
+</p>
+
+<p>
+  <b>Identity document type:</b>
+  <%= @application.identity_document_type_id %>
+</p>
+
+<p>
+  <b>Document series:</b>
+  <%= @application.document_series %>
+</p>
+
+<p>
+  <b>Document number:</b>
+  <%= @application.document_number %>
+</p>
+
+<p>
+  <b>Document date:</b>
+  <%= @application.document_date %>
+</p>
+
+<p>
+  <b>Entrant last name:</b>
+  <%= @application.entrant_last_name %>
+</p>
+
+<p>
+  <b>Entrant first name:</b>
+  <%= @application.entrant_first_name %>
+</p>
+
+<p>
+  <b>Entrant middle name:</b>
+  <%= @application.entrant_middle_name %>
+</p>
+
+<p>
+  <b>Russian:</b>
+  <%= @application.russian %>
+</p>
+
+<p>
+  <b>Chemistry:</b>
+  <%= @application.chemistry %>
+</p>
+
+<p>
+  <b>Biology:</b>
+  <%= @application.biology %>
+</p>
+
+<p>
+  <b>Target organization:</b>
+  <%= @application.target_organization_id %>
+</p>
+
+<p>
+  <b>Nationality type:</b>
+  <%= @application.nationality_type_id %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @application.gender_id %>
+</p>
+
+<p>
+  <b>Birth date:</b>
+  <%= @application.birth_date %>
+</p>
+
+<p>
+  <b>Edu document type:</b>
+  <%= @application.edu_document_type_id %>
+</p>
+
+<p>
+  <b>Document series:</b>
+  <%= @application.document_series %>
+</p>
+
+<p>
+  <b>Edu document number:</b>
+  <%= @application.edu_document_number %>
+</p>
+
+<p>
+  <b>Document date:</b>
+  <%= @application.document_date %>
+</p>
+
+<p>
+  <b>Need hostel:</b>
+  <%= @application.need_hostel %>
+</p>
+
+<p>
+  <b>Lech budget:</b>
+  <%= @application.lech_budget %>
+</p>
+
+<p>
+  <b>Ped budget:</b>
+  <%= @application.ped_budget %>
+</p>
+
+<p>
+  <b>Stomat budget:</b>
+  <%= @application.stomat_budget %>
+</p>
+
+<p>
+  <b>Lech paid:</b>
+  <%= @application.lech_paid %>
+</p>
+
+<p>
+  <b>Ped paid:</b>
+  <%= @application.ped_paid %>
+</p>
+
+<p>
+  <b>Stomat paid:</b>
+  <%= @application.stomat_paid %>
+</p>
+
+<p>
+  <b>Original received:</b>
+  <%= @application.original_received %>
+</p>
+
+<p>
+  <b>Registration date:</b>
+  <%= @application.registration_date %>
+</p>
+
+<p>
+  <b>Last dany day:</b>
+  <%= @application.last_dany_day %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @application.status_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_application_path(@application) %> |
+<%= link_to 'Back', applications_path %>
