@@ -1,9 +1,10 @@
 Priem::Application.routes.draw do
+  resources :applications
+  resources :applications do
+    collection { post :import }
+  end
+
   resources :requests
-
-
-  get "fis/ping"
-  post "fis/pong"
   
 
   # The priority is based upon order of creation:
