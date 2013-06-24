@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624175556) do
+ActiveRecord::Schema.define(:version => 20130624182645) do
 
   create_table "admission_volumes", :force => true do |t|
     t.integer  "campaign_id"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20130624175556) do
   create_table "applications", :force => true do |t|
     t.integer  "application_number"
     t.integer  "identity_document_type_id"
-    t.string   "document_series"
     t.string   "document_number"
     t.date     "document_date"
     t.string   "entrant_last_name"
@@ -64,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20130624175556) do
     t.integer  "status_id",                 :default => 2
     t.datetime "created_at",                                   :null => false
     t.datetime "updated_at",                                   :null => false
+    t.string   "document_series"
+    t.string   "edu_document_series"
   end
 
   create_table "auth_data", :force => true do |t|
