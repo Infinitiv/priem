@@ -44,6 +44,10 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
+    case Rails.env
+      when 'development' then url = 'priem.edu.ru:8000'
+      when 'production' then url = '10.0.1.3:8080'
+    end
     method = '/' + Query.find(params[:request][:query_id]).name
     request = data(method)
     uri = URI.parse('http://priem.edu.ru:8000/import/importservice.svc')
