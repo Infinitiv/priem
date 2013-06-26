@@ -1,0 +1,21 @@
+<h1>Listing admissive_volumes</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admissive_volumes.each do |admissive_volume| %>
+  <tr>
+    <td><%= link_to 'Show', admissive_volume %></td>
+    <td><%= link_to 'Edit', edit_admissive_volume_path(admissive_volume) %></td>
+    <td><%= link_to 'Destroy', admissive_volume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Admissive volume', new_admissive_volume_path %>

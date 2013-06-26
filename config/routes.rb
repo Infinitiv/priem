@@ -5,7 +5,7 @@ Priem::Application.routes.draw do
   end
 
   resources :requests
-  
+  resources :admissive_volumes  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

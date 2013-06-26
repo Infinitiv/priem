@@ -120,15 +120,17 @@ class RequestsController < ApplicationController
         data.PackageData do |pd|
           campaign_info(pd) if params[:campaign_info]
 	  admission_info(pd) if params[:admission_info]
+	  application(pd) if params[:application]
         end
       end
-    when '/test/import'
+    when '/import'
       data = Builder::XmlMarkup.new(indent: 2)
       data.Root do |root|
         auth_data(root)
         data.PackageData do |pd|
-          campaign_info(pd)
-	  admission_info(pd)
+          campaign_info(pd) if params[:campaign_info]
+	  admission_info(pd) if params[:admission_info]
+	  application(pd) if params[:application]
         end
       end
     end
@@ -253,8 +255,8 @@ class RequestsController < ApplicationController
 		  end
 		end
 	      end
-	      cm.entrance_test_items.each do |etim|
 		cg.EntranceTestItems do |etis|
+		cm.entrance_test_items.each do |etim|
 		  etis.EntranceTestItem do |eti|
 		    eti.UID etim.id
 		    eti.EntranceTestTypeID etim.entrance_test_type_id
@@ -267,13 +269,209 @@ class RequestsController < ApplicationController
 		    end
 		  end
 		end
-	      end
+		end
 	  end
 	end
       end
     end
   end
-
+  
+  def application(root)
+    application = Builder::XmlMarkup.new(indent: 2)
+    @a = Application.find_all_by_status_id(2).first
+    root.Applications do |as|
+      as.Application do |a|
+	a.UID @a.id
+	a.ApplicationNumber @a.application_number
+	a.Entrant do |e|
+	  e.UID @a.id
+	  e.FirstName @a.entrant_first_name
+	  e.MiddleName @a.entrant_middle_name
+	  e.LastName @a.entrant_last_name
+	  e.GenderID @a.gender_id
+	end
+	a.RegistrationDate @a.registration_date.to_datetime
+	a.NeedHostel @a.need_hostel
+	a.StatusID @a.status_id
+	a.SelectedCompetitiveGroups do |scg|
+	  scg.CompetitiveGroupID 1 if @a.lech_budget || @a.lech_paid
+	  scg.CompetitiveGroupID 2 if @a.ped_budget || @a.ped_paid
+	  scg.CompetitiveGroupID 3 if @a.stomat_budget || @a.stomat_paid
+	end
+	a.SelectedCompetitiveGroupItems do |scgi|
+	  scgi.CompetitiveGroupItemID 1 if @a.lech_budget || @a.lech_paid
+	  scgi.CompetitiveGroupItemID 2 if @a.ped_budget || @a.ped_paid
+	  scgi.CompetitiveGroupItemID 3 if @a.stomat_budget || @a.stomat_paid
+	end
+	a.FinSourceAndEduForms do |fsaef|
+	  if @a.lech_budget || @a.ped_budget || @a.stomat_budget
+	    fsaef.FinSourceEduForm do |fsef|
+	      fsef.FinanceSourceID 14
+	      fsef.EducationFormID 11
+	    end
+	  end
+	  if @a.lech_paid || @a.ped_paid || @a.stomat_paid
+	    fsaef.FinSourceEduForm do |fsef|
+	      fsef.FinanceSourceID 15
+	      fsef.EducationFormID 11
+	    end
+	  end
+	  if @a.target_organization_id
+	    fsaef.FinSourceEduForm do |fsef|
+	      fsef.FinanceSourceID 16
+	      fsef.EducationFormID 11
+	      fsef.TargetOrganizationUID @a.target_organization_id
+	    end
+	  end
+	end
+	a.EntranceTestResults do |etrs|
+	  if @a.russian
+	    if @a.lech_budget || @a.lech_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "russian"
+		etr.ResultValue @a.russian
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 1
+		end
+		etr.EntranceTestTypeID 1
+		etr.CompetitiveGroupID 1
+	      end
+	    end
+	    if @a.ped_budget || @a.ped_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "russian"
+		etr.ResultValue @a.russian
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 1
+		end
+		etr.EntranceTestTypeID 1
+		etr.CompetitiveGroupID 2
+	      end
+	    end
+	    if @a.stomat_budget || @a.stomat_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "russian"
+		etr.ResultValue @a.russian
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 1
+		end
+		etr.EntranceTestTypeID 1
+		etr.CompetitiveGroupID 3
+	      end
+	    end
+	  end
+	  if @a.biology
+	    if @a.lech_budget || @a.lech_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "biology"
+		etr.ResultValue @a.biology
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 4
+		end
+		etr.EntranceTestTypeID 1
+		etr.CompetitiveGroupID 1
+	      end
+	    end
+	    if @a.ped_budget || @a.ped_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "biology"
+		etr.ResultValue @a.biology
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 4
+		end
+		etr.EntranceTestTypeID 1
+		etr.CompetitiveGroupID 2
+	      end
+	    end
+	    if @a.stomat_budget || @a.stomat_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "biology"
+		etr.ResultValue @a.biology
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 4
+		end
+		etr.EntranceTestTypeID 1
+		etr.CompetitiveGroupID 3
+	      end
+	    end
+	  end
+	  if @a.chemistry
+	    if @a.lech_budget || @a.lech_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "chemistry"
+		etr.ResultValue @a.chemistry
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 11
+		end
+		etr.EntranceTestTypeID 3
+		etr.CompetitiveGroupID 1
+	      end
+	    end
+	    if @a.ped_budget || @a.ped_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "chemistry"
+		etr.ResultValue @a.chemistry
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 11
+		end
+		etr.EntranceTestTypeID 3
+		etr.CompetitiveGroupID 2
+	      end
+	    end
+	    if @a.stomat_budget || @a.stomat_paid
+	      etrs.EntranceTestResult do |etr|
+		etr.UID @a.application_number.to_s + "chemistry"
+		etr.ResultValue @a.chemistry
+		etr.ResultSourceTypeID 1
+		etr.EntranceTestSubject do |ets|
+		  ets.SubjectID 11
+		end
+		etr.EntranceTestTypeID 3
+		etr.CompetitiveGroupID 3
+	      end
+	    end
+	  end
+	end
+	a.ApplicationDocuments do |ad|
+	    ad.IdentityDocument do |id|
+	      id.OriginalReceived true
+	      id.DocumentSeries @a.document_series
+	      id.DocumentNumber @a.document_number
+	      id.DocumentDate @a.document_date
+	      id.IdentityDocumentTypeID 1
+	      id.NationalityTypeID 1
+	      id.BirthDate @a.birth_date
+	    end
+	    ad.EduDocuments do |eds|
+	      eds.EduDocument do |ed|
+		if @a.edu_document_type_id == 1
+		  ed.SchoolCertificateDocument do |scd|
+		    scd.OriginalReceived @a.original_received
+		    scd.DocumentSeries @a.edu_document_series
+		    scd.DocumentNumber @a.edu_document_number
+		  end
+		else
+		  ed.MiddleEduDiplomaDocument do |medd|
+		    medd.OriginalReceived @a.original_received
+		    medd.DocumentSeries @a.edu_document_series
+		    medd.DocumentNumber @a.edu_document_number
+		  end
+		end
+	      end
+	    end
+	  end
+      end
+    end
+  end
+  
   def applications(root)
     
   end

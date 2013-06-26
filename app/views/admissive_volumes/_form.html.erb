@@ -1,0 +1,17 @@
+<%= form_for(@admissive_volume) do |f| %>
+  <% if @admissive_volume.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admissive_volume.errors.count, "error") %> prohibited this admissive_volume from being saved:</h2>
+
+      <ul>
+      <% @admissive_volume.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
