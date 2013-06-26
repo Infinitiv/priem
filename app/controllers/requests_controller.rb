@@ -332,7 +332,7 @@ class RequestsController < ApplicationController
 	  if @a.russian
 	    if @a.lech_budget || @a.lech_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "russian"
+		etr.UID 1.to_s + @a.application_number.to_s + "russian"
 		etr.ResultValue @a.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
@@ -344,7 +344,7 @@ class RequestsController < ApplicationController
 	    end
 	    if @a.ped_budget || @a.ped_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "russian"
+		etr.UID 2.to_s + @a.application_number.to_s + "russian"
 		etr.ResultValue @a.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
@@ -356,7 +356,7 @@ class RequestsController < ApplicationController
 	    end
 	    if @a.stomat_budget || @a.stomat_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "russian"
+		etr.UID 3.to_s + @a.application_number.to_s + "russian"
 		etr.ResultValue @a.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
@@ -370,7 +370,7 @@ class RequestsController < ApplicationController
 	  if @a.biology
 	    if @a.lech_budget || @a.lech_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "biology"
+		etr.UID 1.to_s + @a.application_number.to_s + "biology"
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
@@ -382,7 +382,7 @@ class RequestsController < ApplicationController
 	    end
 	    if @a.ped_budget || @a.ped_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "biology"
+		etr.UID 2.to_s + @a.application_number.to_s + "biology"
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
@@ -394,7 +394,7 @@ class RequestsController < ApplicationController
 	    end
 	    if @a.stomat_budget || @a.stomat_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "biology"
+		etr.UID 3.to_s + @a.application_number.to_s + "biology"
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
@@ -408,7 +408,7 @@ class RequestsController < ApplicationController
 	  if @a.chemistry
 	    if @a.lech_budget || @a.lech_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "chemistry"
+		etr.UID 1.to_s + @a.application_number.to_s + "chemistry"
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
@@ -420,7 +420,7 @@ class RequestsController < ApplicationController
 	    end
 	    if @a.ped_budget || @a.ped_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "chemistry"
+		etr.UID 2.to_s + @a.application_number.to_s + "chemistry"
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
@@ -432,7 +432,7 @@ class RequestsController < ApplicationController
 	    end
 	    if @a.stomat_budget || @a.stomat_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID @a.application_number.to_s + "chemistry"
+		etr.UID 3.to_s + @a.application_number.to_s + "chemistry"
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
