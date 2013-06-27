@@ -482,10 +482,6 @@ class RequestsController < ApplicationController
       end
     end
   end
-  
-  def applications(root)
-    
-  end
 
   def order_of_admission(root)
     
