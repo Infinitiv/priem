@@ -50,7 +50,7 @@ class RequestsController < ApplicationController
     end
     method = '/' + Query.find(params[:request][:query_id]).name
     request = data(method)
-    uri = URI.parse('http://priem.edu.ru:8000/import/importservice.svc')
+    uri = URI.parse('http://' + url + '/import/importservice.svc')
     http = Net::HTTP.new(uri.host, uri.port)
     headers = {'Content-Type' => 'text/xml'}
     response = http.post(uri.path + method, request, headers)
