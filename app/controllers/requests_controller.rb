@@ -124,7 +124,6 @@ class RequestsController < ApplicationController
         data.PackageData do |pd|
           campaign_info(pd) if params[:campaign_info]
 	  admission_info(pd) if params[:admission_info]
-	  application(pd) if params[:application]
 	  applications(pd) if params[:applications]
         end
       end
@@ -135,7 +134,6 @@ class RequestsController < ApplicationController
         data.PackageData do |pd|
           campaign_info(pd) if params[:campaign_info]
 	  admission_info(pd) if params[:admission_info]
-	  application(pd) if params[:application]
 	  applications(pd) if params[:applications]
         end
       end
@@ -285,60 +283,61 @@ class RequestsController < ApplicationController
     end
   end
   
-  def application(root)
-    application = Builder::XmlMarkup.new(indent: 2)
-    @a = Application.find_all_by_status_id(4).first
+  def applications(root)
+    applications = Builder::XmlMarkup.new(indent: 2)
+    @a = Application.find_all_by_status_id(4)
     root.Applications do |as|
+      @a.each do |am|
       as.Application do |a|
-	a.UID a.id
-	a.ApplicationNumber a.application_number
+	a.UID am.id
+	a.ApplicationNumber am.application_number
 	a.Entrant do |e|
-	  e.UID a.id
-	  e.FirstName a.entrant_first_name
-	  e.MiddleName a.entrant_middle_name
-	  e.LastName a.entrant_last_name
-	  e.GenderID a.gender_id
+	  e.UID am.id
+	  e.FirstName am.entrant_first_name
+	  e.MiddleName am.entrant_middle_name
+	  e.LastName am.entrant_last_name
+	  e.GenderID am.gender_id
 	end
-	a.RegistrationDate a.registration_date.to_datetime
-	a.NeedHostel a.need_hostel
-	a.StatusID a.status_id
+	a.RegistrationDate am.registration_date.to_datetime
+	a.NeedHostel am.need_hostel
+	a.StatusID am.status_id
 	a.SelectedCompetitiveGroups do |scg|
-	  scg.CompetitiveGroupID 1 if a.lech_budget || a.lech_paid
-	  scg.CompetitiveGroupID 2 if a.ped_budget || a.ped_paid
-	  scg.CompetitiveGroupID 3 if a.stomat_budget || a.stomat_paid
+	  scg.CompetitiveGroupID 1 if am.lech_budget || am.lech_paid
+	  scg.CompetitiveGroupID 2 if am.ped_budget || am.ped_paid
+	  scg.CompetitiveGroupID 3 if am.stomat_budget || am.stomat_paid
 	end
 	a.SelectedCompetitiveGroupItems do |scgi|
-	  scgi.CompetitiveGroupItemID 1 if a.lech_budget || a.lech_paid
-	  scgi.CompetitiveGroupItemID 2 if a.ped_budget || a.ped_paid
-	  scgi.CompetitiveGroupItemID 3 if a.stomat_budget || a.stomat_paid
+	  scgi.CompetitiveGroupItemID 1 if am.lech_budget || am.lech_paid
+	  scgi.CompetitiveGroupItemID 2 if am.ped_budget || am.ped_paid
+	  scgi.CompetitiveGroupItemID 3 if am.stomat_budget || am.stomat_paid
 	end
 	a.FinSourceAndEduForms do |fsaef|
-	  if a.lech_budget || a.ped_budget || a.stomat_budget
+	  if am.lech_budget || am.ped_budget || am.stomat_budget
 	    fsaef.FinSourceEduForm do |fsef|
 	      fsef.FinanceSourceID 14
 	      fsef.EducationFormID 11
 	    end
 	  end
-	  if a.lech_paid || a.ped_paid || a.stomat_paid
+	  if am.lech_paid || am.ped_paid || am.stomat_paid
 	    fsaef.FinSourceEduForm do |fsef|
 	      fsef.FinanceSourceID 15
 	      fsef.EducationFormID 11
 	    end
 	  end
-	  if a.target_organization_id
+	  if am.target_organization_id
 	    fsaef.FinSourceEduForm do |fsef|
 	      fsef.FinanceSourceID 16
 	      fsef.EducationFormID 11
-	      fsef.TargetOrganizationUID a.target_organization_id
+	      fsef.TargetOrganizationUID am.target_organization_id
 	    end
 	  end
 	end
 	a.EntranceTestResults do |etrs|
-	  if a.russian
-	    if a.lech_budget || a.lech_paid
+	  if am.russian
+	    if am.lech_budget || am.lech_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 1.to_s + a.application_number.to_s + "russian"
-		etr.ResultValue a.russian
+		etr.UID 1.to_s + am.application_number.to_s + "russian"
+		etr.ResultValue am.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 1
@@ -347,10 +346,10 @@ class RequestsController < ApplicationController
 		etr.CompetitiveGroupID 1
 	      end
 	    end
-	    if a.ped_budget || a.ped_paid
+	    if am.ped_budget || am.ped_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 2.to_s + a.application_number.to_s + "russian"
-		etr.ResultValue a.russian
+		etr.UID 2.to_s + am.application_number.to_s + "russian"
+		etr.ResultValue am.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 1
@@ -359,10 +358,10 @@ class RequestsController < ApplicationController
 		etr.CompetitiveGroupID 2
 	      end
 	    end
-	    if a.stomat_budget || a.stomat_paid
+	    if am.stomat_budget || am.stomat_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 3.to_s + a.application_number.to_s + "russian"
-		etr.ResultValue a.russian
+		etr.UID 3.to_s + am.application_number.to_s + "russian"
+		etr.ResultValue am.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 1
@@ -372,11 +371,11 @@ class RequestsController < ApplicationController
 	      end
 	    end
 	  end
-	  if a.biology
-	    if a.lech_budget || a.lech_paid
+	  if am.biology
+	    if am.lech_budget || am.lech_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 1.to_s + a.application_number.to_s + "biology"
-		etr.ResultValue a.biology
+		etr.UID 1.to_s + am.application_number.to_s + "biology"
+		etr.ResultValue am.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 4
@@ -385,10 +384,10 @@ class RequestsController < ApplicationController
 		etr.CompetitiveGroupID 1
 	      end
 	    end
-	    if a.ped_budget || a.ped_paid
+	    if am.ped_budget || am.ped_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 2.to_s + a.application_number.to_s + "biology"
-		etr.ResultValue a.biology
+		etr.UID 2.to_s + am.application_number.to_s + "biology"
+		etr.ResultValue am.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 4
@@ -397,10 +396,10 @@ class RequestsController < ApplicationController
 		etr.CompetitiveGroupID 2
 	      end
 	    end
-	    if a.stomat_budget || a.stomat_paid
+	    if am.stomat_budget || am.stomat_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 3.to_s + a.application_number.to_s + "biology"
-		etr.ResultValue a.biology
+		etr.UID 3.to_s + am.application_number.to_s + "biology"
+		etr.ResultValue am.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 4
@@ -410,11 +409,11 @@ class RequestsController < ApplicationController
 	      end
 	    end
 	  end
-	  if a.chemistry
-	    if a.lech_budget || a.lech_paid
+	  if am.chemistry
+	    if am.lech_budget || am.lech_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 1.to_s + a.application_number.to_s + "chemistry"
-		etr.ResultValue a.chemistry
+		etr.UID 1.to_s + am.application_number.to_s + "chemistry"
+		etr.ResultValue am.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 11
@@ -423,10 +422,10 @@ class RequestsController < ApplicationController
 		etr.CompetitiveGroupID 1
 	      end
 	    end
-	    if a.ped_budget || a.ped_paid
+	    if am.ped_budget || am.ped_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 2.to_s + a.application_number.to_s + "chemistry"
-		etr.ResultValue a.chemistry
+		etr.UID 2.to_s + am.application_number.to_s + "chemistry"
+		etr.ResultValue am.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 11
@@ -435,10 +434,10 @@ class RequestsController < ApplicationController
 		etr.CompetitiveGroupID 2
 	      end
 	    end
-	    if a.stomat_budget || a.stomat_paid
+	    if am.stomat_budget || am.stomat_paid
 	      etrs.EntranceTestResult do |etr|
-		etr.UID 3.to_s + a.application_number.to_s + "chemistry"
-		etr.ResultValue a.chemistry
+		etr.UID 3.to_s + am.application_number.to_s + "chemistry"
+		etr.ResultValue am.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 11
@@ -452,31 +451,32 @@ class RequestsController < ApplicationController
 	a.ApplicationDocuments do |ad|
 	    ad.IdentityDocument do |id|
 	      id.OriginalReceived true
-	      id.DocumentSeries a.document_series
-	      id.DocumentNumber a.document_number
-	      id.DocumentDate a.document_date
+	      id.DocumentSeries am.document_series
+	      id.DocumentNumber am.document_number
+	      id.DocumentDate am.document_date
 	      id.IdentityDocumentTypeID 1
 	      id.NationalityTypeID 1
-	      id.BirthDate a.birth_date
+	      id.BirthDate am.birth_date
 	    end
 	    ad.EduDocuments do |eds|
 	      eds.EduDocument do |ed|
-		if a.edu_document_type_id == 1
+		if am.edu_document_type_id == 1
 		  ed.SchoolCertificateDocument do |scd|
-		    scd.OriginalReceived a.original_received
-		    scd.DocumentSeries a.edu_document_series
-		    scd.DocumentNumber a.edu_document_number
+		    scd.OriginalReceived am.original_received
+		    scd.DocumentSeries am.edu_document_series
+		    scd.DocumentNumber am.edu_document_number
 		  end
 		else
 		  ed.MiddleEduDiplomaDocument do |medd|
-		    medd.OriginalReceived a.original_received
-		    medd.DocumentSeries a.edu_document_series
-		    medd.DocumentNumber a.edu_document_number
+		    medd.OriginalReceived am.original_received
+		    medd.DocumentSeries am.edu_document_series
+		    medd.DocumentNumber am.edu_document_number
 		  end
 		end
 	      end
 	    end
 	  end
+      end
       end
     end
   end
