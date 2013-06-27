@@ -135,6 +135,7 @@ class RequestsController < ApplicationController
           campaign_info(pd) if params[:campaign_info]
 	  admission_info(pd) if params[:admission_info]
 	  application(pd) if params[:application]
+	  applications(pd) if params[:applications]
         end
       end
     end
