@@ -252,8 +252,8 @@ class RequestsController < ApplicationController
 		  		tos.TargetOrganization do |to|
 		    		to.UID tom.id
 		    		to.TargetOrganizationName tom.target_organization_name
-		    		tom.competitive_group_target_items.each do |cgtim|  
-		      			to.Items do |i|
+		      		to.Items do |i|
+		    			tom.competitive_group_target_items.each do |cgtim|  
 							i.CompetitiveGroupTargetItem do |cgti|
 			  					cgti.UID cgtim.id
 			  					cgti.EducationLevelID cgtim.education_level
