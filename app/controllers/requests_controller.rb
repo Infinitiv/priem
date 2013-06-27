@@ -213,9 +213,9 @@ class RequestsController < ApplicationController
 	    i.NumberPaidO cm.number_paid_o if cm.number_paid_o
 	    i.NumberPaidOZ cm.number_paid_oz if cm.number_paid_oz
 	    i.NumberPaidZ cm.number_paid_z if cm.number_paid_z
-	    i.NumberTargetO cm.number_target_o if cm.number_paid_o
-	    i.NumberTargetOZ cm.number_target_oz if cm.number_paid_oz
-	    i.NumberTargetZ cm.number_target_z if cm.number_paid_z	    
+	    i.NumberTargetO cm.number_target_o if cm.number_target_o
+	    i.NumberTargetOZ cm.number_target_oz if cm.number_target_oz
+	    i.NumberTargetZ cm.number_target_z if cm.number_target_z	    
 	  end
 	end
       end
@@ -239,9 +239,9 @@ class RequestsController < ApplicationController
 		  cgi.NumberPaidO cgim.number_paid_o if cgim.number_paid_o
 		  cgi.NumberPaidOZ cgim.number_paid_oz if cgim.number_paid_oz
 		  cgi.NumberPaidZ cgim.number_paid_z if cgim.number_paid_z
-		  cgi.NumberTargetO cm.number_target_o if cgim.number_paid_o
-		  cgi.NumberTargetOZ cm.number_target_oz if cgim.number_paid_oz
-		  cgi.NumberTargetZ cm.number_target_z if cgim.number_paid_z		  
+		  cgi.NumberTargetO cm.number_target_o if cgim.number_target_o
+		  cgi.NumberTargetOZ cm.number_target_oz if cgim.number_target_oz
+		  cgi.NumberTargetZ cm.number_target_z if cgim.number_target_z		  
 		end
 	      end
 	    end
