@@ -285,7 +285,7 @@ class RequestsController < ApplicationController
   
   def application(root)
     application = Builder::XmlMarkup.new(indent: 2)
-    @a = Application.find_all_by_status_id(2).first
+    @a = Application.find_all_by_status_id(4).first
     root.Applications do |as|
       as.Application do |a|
 	a.UID @a.id
