@@ -285,7 +285,7 @@ class RequestsController < ApplicationController
   end
   
   def applications(root)
-    application = Builder::XmlMarkup.new(indent: 2)
+    applications = Builder::XmlMarkup.new(indent: 2)
     @a = Application.find_all_by_status_id(4)
     root.Applications do |as|
       @a.each do |a|
