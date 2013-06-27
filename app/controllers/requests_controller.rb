@@ -104,6 +104,14 @@ class RequestsController < ApplicationController
       data.Root do |root|
         auth_data(root)
       end
+    when '/checkapplication'
+      data = Builder::XmlMarkup.new(indent: 2)
+      data.Root do |root|
+        auth_data(root)
+        data.PackageData do |pd|
+        	application(pd) if params[:application]
+    	end
+      end
     when '/dictionarydetails'
       data = Builder::XmlMarkup.new(indent: 2)
       data.Root do |root|
@@ -244,7 +252,7 @@ class RequestsController < ApplicationController
 		  tos.TargetOrganization do |to|
 		    to.UID tom.id
 		    to.TargetOrganizationName tom.target_organization_name
-		    tom.comptititve_group_target_items.each do |cgtim|  
+		    tom.competitive_group_target_items.each do |cgtim|  
 		      to.Items do |i|
 			i.CompetitiveGroupTargetItem do |cgti|
 			  cgti.UID cgtim.id
@@ -282,7 +290,7 @@ class RequestsController < ApplicationController
   
   def application(root)
     application = Builder::XmlMarkup.new(indent: 2)
-    @a = Application.find_all_by_status_id(2).first
+    @a = Application.find_all_by_status_id(4).first
     root.Applications do |as|
       as.Application do |a|
 	a.UID @a.id
@@ -414,7 +422,7 @@ class RequestsController < ApplicationController
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 11
 		end
-		etr.EntranceTestTypeID 3
+		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 1
 	      end
 	    end
@@ -426,7 +434,7 @@ class RequestsController < ApplicationController
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 11
 		end
-		etr.EntranceTestTypeID 3
+		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 2
 	      end
 	    end
@@ -438,7 +446,7 @@ class RequestsController < ApplicationController
 		etr.EntranceTestSubject do |ets|
 		  ets.SubjectID 11
 		end
-		etr.EntranceTestTypeID 3
+		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 3
 	      end
 	    end
