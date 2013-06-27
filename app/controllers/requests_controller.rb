@@ -250,7 +250,7 @@ class RequestsController < ApplicationController
 		  tos.TargetOrganization do |to|
 		    to.UID tom.id
 		    to.TargetOrganizationName tom.target_organization_name
-		    tom.competititve_group_target_items.each do |cgtim|  
+		    tom.competitive_group_target_items.each do |cgtim|  
 		      to.Items do |i|
 			i.CompetitiveGroupTargetItem do |cgti|
 			  cgti.UID cgtim.id
