@@ -351,7 +351,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 1
+		  ets.SubjectID 4
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 2
@@ -363,7 +363,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 1
+		  ets.SubjectID 7
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 3
@@ -377,7 +377,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 4
+		  ets.SubjectID 2
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 1
@@ -389,7 +389,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 4
+		  ets.SubjectID 5
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 2
@@ -401,7 +401,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 4
+		  ets.SubjectID 8
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 3
@@ -415,7 +415,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 11
+		  ets.SubjectID 3
 		end
 		etr.EntranceTestTypeID 3
 		etr.CompetitiveGroupID 1
@@ -427,7 +427,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 11
+		  ets.SubjectID 6
 		end
 		etr.EntranceTestTypeID 3
 		etr.CompetitiveGroupID 2
@@ -439,7 +439,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 11
+		  ets.SubjectID 9
 		end
 		etr.EntranceTestTypeID 3
 		etr.CompetitiveGroupID 3
