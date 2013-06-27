@@ -285,11 +285,10 @@ class RequestsController < ApplicationController
     end
   end
   
-  def applications(root)
-    applications = Builder::XmlMarkup.new(indent: 2)
-    @a = Application.find_all_by_status_id(4)
+  def application(root)
+    application = Builder::XmlMarkup.new(indent: 2)
+    @a = Application.find_all_by_status_id(4).first
     root.Applications do |as|
-      @a.each do |a|
       as.Application do |a|
 	a.UID a.id
 	a.ApplicationNumber a.application_number
@@ -478,7 +477,6 @@ class RequestsController < ApplicationController
 	      end
 	    end
 	  end
-      end
       end
     end
   end
