@@ -247,26 +247,26 @@ class RequestsController < ApplicationController
 		end
 	      end
 	    end
-	      cm.target_organizations.each do |tom|
 		cg.TargetOrganizations do |tos|
-		  tos.TargetOrganization do |to|
-		    to.UID tom.id
-		    to.TargetOrganizationName tom.target_organization_name
-		    tom.competitive_group_target_items.each do |cgtim|  
-		      to.Items do |i|
-			i.CompetitiveGroupTargetItem do |cgti|
-			  cgti.UID cgtim.id
-			  cgti.EducationLevelID cgtim.education_level
-			  cgti.NumberTargetO cgtim.number_target_o if cgtim.number_target_o
-			  cgti.NumberTargetOZ cgtim.number_target_oz if cgtim.number_target_oz
-			  cgti.NumberTargetZ cgtim.number_target_z if cgtim.number_target_z
-			  cgti.DirectionID cgtim.direction_id
+	     	cm.target_organizations.each do |tom|
+		  		tos.TargetOrganization do |to|
+		    		to.UID tom.id
+		    		to.TargetOrganizationName tom.target_organization_name
+		    		tom.competitive_group_target_items.each do |cgtim|  
+		      			to.Items do |i|
+							i.CompetitiveGroupTargetItem do |cgti|
+			  					cgti.UID cgtim.id
+			  					cgti.EducationLevelID cgtim.education_level
+			  					cgti.NumberTargetO cgtim.number_target_o if cgtim.number_target_o
+			  					cgti.NumberTargetOZ cgtim.number_target_oz if cgtim.number_target_oz
+			  					cgti.NumberTargetZ cgtim.number_target_z if cgtim.number_target_z
+			  					cgti.DirectionID cgtim.direction_id
+							end
+		      			end
+		    		end
+		  		end
 			end
-		      end
-		    end
-		  end
-		end
-	      end
+	    end
 		cg.EntranceTestItems do |etis|
 		cm.entrance_test_items.each do |etim|
 		  etis.EntranceTestItem do |eti|
