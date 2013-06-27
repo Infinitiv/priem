@@ -239,9 +239,9 @@ class RequestsController < ApplicationController
 		  cgi.NumberPaidO cgim.number_paid_o if cgim.number_paid_o
 		  cgi.NumberPaidOZ cgim.number_paid_oz if cgim.number_paid_oz
 		  cgi.NumberPaidZ cgim.number_paid_z if cgim.number_paid_z
-		  cgi.NumberTargetO cm.number_target_o if cgim.number_target_o
-		  cgi.NumberTargetOZ cm.number_target_oz if cgim.number_target_oz
-		  cgi.NumberTargetZ cm.number_target_z if cgim.number_target_z		  
+		  cgi.NumberTargetO cgim.number_target_o if cgim.number_target_o
+		  cgi.NumberTargetOZ cgim.number_target_oz if cgim.number_target_oz
+		  cgi.NumberTargetZ cgim.number_target_z if cgim.number_target_z		  
 		end
 	      end
 	    end
