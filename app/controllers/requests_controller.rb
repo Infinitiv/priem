@@ -351,7 +351,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 4
+		  ets.SubjectID 1
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 2
@@ -363,7 +363,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.russian
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 7
+		  ets.SubjectID 1
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 3
@@ -377,7 +377,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 2
+		  ets.SubjectID 4
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 1
@@ -389,7 +389,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 5
+		  ets.SubjectID 4
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 2
@@ -401,7 +401,7 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.biology
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 8
+		  ets.SubjectID 4
 		end
 		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 3
@@ -415,9 +415,9 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 3
+		  ets.SubjectID 11
 		end
-		etr.EntranceTestTypeID 3
+		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 1
 	      end
 	    end
@@ -427,9 +427,9 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 6
+		  ets.SubjectID 11
 		end
-		etr.EntranceTestTypeID 3
+		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 2
 	      end
 	    end
@@ -439,9 +439,9 @@ class RequestsController < ApplicationController
 		etr.ResultValue @a.chemistry
 		etr.ResultSourceTypeID 1
 		etr.EntranceTestSubject do |ets|
-		  ets.SubjectID 9
+		  ets.SubjectID 11
 		end
-		etr.EntranceTestTypeID 3
+		etr.EntranceTestTypeID 1
 		etr.CompetitiveGroupID 3
 	      end
 	    end
