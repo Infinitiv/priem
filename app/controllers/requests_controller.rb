@@ -465,14 +465,14 @@ class RequestsController < ApplicationController
 		if am.edu_document_type_id == 1
 		  ed.SchoolCertificateDocument do |scd|
 		    scd.OriginalReceived am.original_received
-		    scd.OriginalReceivedDate am.registration_date
+		    scd.OriginalReceivedDate am.registration_date if am.original_received
 		    scd.DocumentSeries am.edu_document_series
 		    scd.DocumentNumber am.edu_document_number
 		  end
 		else
 		  ed.MiddleEduDiplomaDocument do |medd|
 		    medd.OriginalReceived am.original_received
-		    medd.OriginalReceivedDate am.registration_date
+		    medd.OriginalReceivedDate am.registration_date if am.original_received
 		    medd.DocumentSeries am.edu_document_series
 		    medd.DocumentNumber am.edu_document_number
 		  end
