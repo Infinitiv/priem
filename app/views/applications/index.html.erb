@@ -1,5 +1,10 @@
 <h1>Listing applications</h1>
-
+<h2>Import Applications</h2>
+<%= form_tag import_applications_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+<%= will_paginate @applications %>
 <%= link_to 'New Application', new_application_path %>
 <table class="table">
   <tr>
@@ -35,6 +40,7 @@
     <th>Status</th>
     <th></th>
     <th></th>
+
     <th></th>
   </tr>
 
@@ -77,10 +83,4 @@
 <% end %>
 </table>
 
-<h2>Import Applications</h2>
-
-<%= form_tag import_applications_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
-<% end %>
 
