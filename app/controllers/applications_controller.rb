@@ -2,7 +2,7 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.json
   def index
-    @applications = Application.paginate(:page => params[:page])
+    @applications = Application.paginate(:page => params[:page], :per_page => 100)
 
     respond_to do |format|
       format.html # index.html.erb

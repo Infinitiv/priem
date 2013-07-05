@@ -1,5 +1,7 @@
 <h1>Listing requests</h1>
+<%= will_paginate @requests %>
 
+<%= link_to 'New Request', new_request_path %>
 <table>
   <tr>
     <th>Query</th>
@@ -21,7 +23,4 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Request', new_request_path %>
+<%= will_paginate @applications %>
