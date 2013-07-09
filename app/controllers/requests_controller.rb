@@ -453,7 +453,7 @@ class RequestsController < ApplicationController
 	a.ApplicationDocuments do |ad|
 	    ad.IdentityDocument do |id|
 	      id.OriginalReceived true
-	      id.DocumentSeries am.document_series
+	      id.DocumentSeries am.document_series if am.document_series
 	      id.DocumentNumber am.document_number
 	      id.DocumentDate am.document_date
 	      id.IdentityDocumentTypeID 1
