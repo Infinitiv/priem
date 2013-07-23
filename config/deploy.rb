@@ -30,6 +30,6 @@ set :user, "markovnin"
 namespace :deploy do
   desc "Restart the Thin processes"
   task :restart do
-    run "cd #{current_path} && bundle exec thin stop && bundle exec thin -d start -p 3002"
+    run "cd #{current_path} && bundle exec thin stop && bundle exec thin -d start -p 3002 -e production"
   end
 end
