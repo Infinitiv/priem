@@ -21,4 +21,8 @@ class Application < ActiveRecord::Base
     else raise "Unknown file type: #{file.original_filename}"
     end
   end
+  
+  def fio
+    [entrant_last_name, entrant_first_name, entrant_middle_name].compact.join(' ')
+  end
 end
