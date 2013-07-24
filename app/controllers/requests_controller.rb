@@ -298,7 +298,7 @@ class RequestsController < ApplicationController
 	  e.LastName am.entrant_last_name
 	  e.GenderID am.gender_id
 	end
-	a.RegistrationDate am.registration_date.to_datetime.to_s.gsub('+00:00', '')
+	a.RegistrationDate am.registration_date.to_datetime
 	a.NeedHostel am.need_hostel
 	a.StatusID am.status_id
 	a.SelectedCompetitiveGroups do |scg|
