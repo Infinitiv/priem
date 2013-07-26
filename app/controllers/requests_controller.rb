@@ -141,7 +141,7 @@ class RequestsController < ApplicationController
       data = Builder::XmlMarkup.new(indent: 2)
       data.Root do |root|
         auth_data(root)
-        data.DateForDelete do |pd|
+        data.DataForDelete do |pd|
 	  applications_del(pd) if params[:applications]
         end
       end
