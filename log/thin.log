@@ -498,3 +498,76 @@
 >> Maximum connections set to 1024
 >> Listening on 0.0.0.0:8083, CTRL+C to stop
 >> Exiting!
+>> Writing PID to tmp/pids/thin.pid
+>> Using rack adapter
+>> Exiting!
+/usr/lib/ruby/gems/1.9.1/gems/bundler-1.3.5/lib/bundler/runtime.rb:33:in `block in setup': You have already activated rack 1.5.2, but your Gemfile requires rack 1.4.5. Using bundle exec may solve this. (Gem::LoadError)
+	from /usr/lib/ruby/gems/1.9.1/gems/bundler-1.3.5/lib/bundler/runtime.rb:19:in `setup'
+	from /usr/lib/ruby/gems/1.9.1/gems/bundler-1.3.5/lib/bundler.rb:120:in `setup'
+	from /usr/lib/ruby/gems/1.9.1/gems/bundler-1.3.5/lib/bundler/setup.rb:17:in `<top (required)>'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:60:in `require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:60:in `rescue in require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:35:in `require'
+	from /home/markovnin/www/priem/config/boot.rb:6:in `<top (required)>'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /home/markovnin/www/priem/config/application.rb:1:in `<top (required)>'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /home/markovnin/www/priem/config/environment.rb:2:in `<top (required)>'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /home/markovnin/www/priem/config.ru:3:in `block in <main>'
+	from /usr/lib/ruby/gems/1.9.1/gems/rack-1.5.2/lib/rack/builder.rb:55:in `instance_eval'
+	from /usr/lib/ruby/gems/1.9.1/gems/rack-1.5.2/lib/rack/builder.rb:55:in `initialize'
+	from /home/markovnin/www/priem/config.ru:1:in `new'
+	from /home/markovnin/www/priem/config.ru:1:in `<main>'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/rack/adapter/loader.rb:33:in `eval'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/rack/adapter/loader.rb:33:in `load'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/rack/adapter/loader.rb:42:in `for'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/thin/controllers/controller.rb:169:in `load_adapter'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/thin/controllers/controller.rb:73:in `start'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/thin/runner.rb:187:in `run_command'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/thin/runner.rb:152:in `run!'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/bin/thin:6:in `<top (required)>'
+	from /usr/bin/thin:23:in `load'
+	from /usr/bin/thin:23:in `<main>'
+>> Writing PID to tmp/pids/thin.pid
+>> Using rack adapter
+>> Exiting!
+/usr/lib/ruby/gems/1.9.1/gems/bundler-1.3.5/lib/bundler/runtime.rb:33:in `block in setup': You have already activated rack 1.5.2, but your Gemfile requires rack 1.4.5. Using bundle exec may solve this. (Gem::LoadError)
+	from /usr/lib/ruby/gems/1.9.1/gems/bundler-1.3.5/lib/bundler/runtime.rb:19:in `setup'
+	from /usr/lib/ruby/gems/1.9.1/gems/bundler-1.3.5/lib/bundler.rb:120:in `setup'
+	from /usr/lib/ruby/gems/1.9.1/gems/bundler-1.3.5/lib/bundler/setup.rb:17:in `<top (required)>'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:60:in `require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:60:in `rescue in require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:35:in `require'
+	from /home/markovnin/www/priem/config/boot.rb:6:in `<top (required)>'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /home/markovnin/www/priem/config/application.rb:1:in `<top (required)>'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /home/markovnin/www/priem/config/environment.rb:2:in `<top (required)>'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /usr/local/lib/site_ruby/1.9.1/rubygems/custom_require.rb:36:in `require'
+	from /home/markovnin/www/priem/config.ru:3:in `block in <main>'
+	from /usr/lib/ruby/gems/1.9.1/gems/rack-1.5.2/lib/rack/builder.rb:55:in `instance_eval'
+	from /usr/lib/ruby/gems/1.9.1/gems/rack-1.5.2/lib/rack/builder.rb:55:in `initialize'
+	from /home/markovnin/www/priem/config.ru:1:in `new'
+	from /home/markovnin/www/priem/config.ru:1:in `<main>'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/rack/adapter/loader.rb:33:in `eval'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/rack/adapter/loader.rb:33:in `load'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/rack/adapter/loader.rb:42:in `for'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/thin/controllers/controller.rb:169:in `load_adapter'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/thin/controllers/controller.rb:73:in `start'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/thin/runner.rb:187:in `run_command'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/lib/thin/runner.rb:152:in `run!'
+	from /usr/lib/ruby/gems/1.9.1/gems/thin-1.5.1/bin/thin:6:in `<top (required)>'
+	from /usr/bin/thin:23:in `load'
+	from /usr/bin/thin:23:in `<main>'
+>> Writing PID to tmp/pids/thin.pid
+>> Using rack adapter
+>> Thin web server (v1.5.1 codename Straight Razor)
+>> Maximum connections set to 1024
+>> Listening on 0.0.0.0:8083, CTRL+C to stop

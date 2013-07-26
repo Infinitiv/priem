@@ -298,7 +298,7 @@ class RequestsController < ApplicationController
       @a.each do |am|
       as.Application do |a|
 	a.UID am.id
-	a.ApplicationNumber am.application_number
+	a.ApplicationNumber [am.campaign.start_year.to_s, am.application_number.to_s].join('-')
 	a.Entrant do |e|
 	  e.UID am.id
 	  e.FirstName am.entrant_first_name

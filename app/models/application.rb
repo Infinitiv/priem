@@ -1,5 +1,7 @@
 class Application < ActiveRecord::Base
-  attr_accessible :application_number, :biology, :birth_date, :chemistry, :document_date, :edu_document_date, :document_number, :document_series, :edu_document_series, :edu_document_number, :edu_document_type_id, :entrant_first_name, :entrant_last_name, :entrant_middle_name, :gender_id, :identity_document_type_id, :last_dany_day, :lech_budget, :lech_paid, :nationality_type_id, :need_hostel, :original_received, :ped_budget, :ped_paid, :registration_date, :russian, :status_id, :stomat_budget, :stomat_paid, :target_organization_id
+  attr_accessible :application_number, :biology, :birth_date, :chemistry, :document_date, :edu_document_date, :document_number, :document_series, :edu_document_series, :edu_document_number, :edu_document_type_id, :entrant_first_name, :entrant_last_name, :entrant_middle_name, :gender_id, :identity_document_type_id, :last_dany_day, :lech_budget, :lech_paid, :nationality_type_id, :need_hostel, :original_received, :ped_budget, :ped_paid, :registration_date, :russian, :status_id, :stomat_budget, :stomat_paid, :target_organization_id, :campaign_id
+  
+  belongs_to :campaign
 
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
