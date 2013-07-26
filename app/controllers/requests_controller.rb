@@ -137,6 +137,14 @@ class RequestsController < ApplicationController
 	  applications(pd) if params[:applications]
         end
       end
+    when '/delete'
+      data = Builder::XmlMarkup.new(indent: 2)
+      data.Root do |root|
+        auth_data(root)
+        data.DateForDelete do |pd|
+	  applications_del(pd) if params[:applications]
+        end
+      end
     end
   end
 
@@ -485,6 +493,23 @@ class RequestsController < ApplicationController
     end
   end
 
+  def applications(root)
+    applications = Builder::XmlMarkup.new(indent: 2)
+    @a = Application.find_all_by_status_id(0)
+    root.Applications do |as|
+      @a.each do |am|
+	as.Application do |a|
+	  a.ApplicationNumber am.application_number
+	  a.RegistrationDate am.registration_date.to_datetime
+	end
+	as.Application do |a|
+	  a.ApplicationNumber am.application_number
+	  a.RegistrationDate am.registration_date.to_datetime.to_s.gsub('+00:00', '')
+	end
+      end
+    end
+  end
+  
   def order_of_admission(root)
     
   end
