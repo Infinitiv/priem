@@ -44,7 +44,7 @@
 
 <% @applications.each do |application| %>
   <tr>
-    <td><%= application.application_number %></td>
+    <td><%= [application.campaign.year_start, "%04d" % application.application_number].join('-') %></td>
     <td><%= application.identity_document_type_id %></td>
     <td><%= application.document_series %></td>
     <td><%= application.document_number %></td>
