@@ -494,7 +494,7 @@ class RequestsController < ApplicationController
   end
 
   def applications_del(root)
-    applications = Builder::XmlMarkup.new(indent: 2)
+    applications_del = Builder::XmlMarkup.new(indent: 2)
     @a = Application.find_all_by_status_id(0)
     root.Applications do |as|
       @a.each do |am|
