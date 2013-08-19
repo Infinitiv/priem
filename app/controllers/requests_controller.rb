@@ -293,7 +293,7 @@ class RequestsController < ApplicationController
   
   def applications(root)
     applications = Builder::XmlMarkup.new(indent: 2)
-    @a = Application.find_all_by_status_id(4)
+    @a = Application.where("last_dany_day > ? or original_received_date > ?", 0, 0)
     root.Applications do |as|
       @a.each do |am|
       as.Application do |a|
