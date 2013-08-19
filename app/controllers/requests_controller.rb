@@ -481,7 +481,7 @@ class RequestsController < ApplicationController
 		else
 		  ed.MiddleEduDiplomaDocument do |medd|
 		    medd.OriginalReceived am.original_received
-		    medd.OriginalReceivedDate am.original_received_date ? am.original_received : am.registration_date
+		    medd.OriginalReceivedDate am.original_received_date ? am.original_received_date : am.registration_date
 		    medd.DocumentSeries am.edu_document_series
 		    medd.DocumentNumber am.edu_document_number
 		  end
