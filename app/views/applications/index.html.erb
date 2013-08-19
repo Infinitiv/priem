@@ -34,6 +34,7 @@
     <th>Stomat paid</th>
     <th>Original received</th>
     <th>Registration date</th>
+    <th>Original received date</th>
     <th>Last dany day</th>
     <th>Status</th>
     <th></th>
@@ -70,6 +71,7 @@
     <td><%= application.stomat_paid ? 1 : 0 %></td>
     <td><%= application.original_received ? 1 : 0 %></td>
     <td><%= application.registration_date %></td>
+    <td><%= application.original_received_date %></td>
     <td><%= application.last_dany_day %></td>
     <td><%= application.status_id %></td>
     <td><%= link_to 'Show', application %></td>

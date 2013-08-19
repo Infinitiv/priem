@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726194007) do
+ActiveRecord::Schema.define(:version => 20130819192639) do
 
   create_table "admission_volumes", :force => true do |t|
     t.integer  "campaign_id"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130726194007) do
     t.string   "edu_document_series"
     t.date     "edu_document_date"
     t.integer  "campaign_id"
+    t.date     "original_received_date"
   end
 
   create_table "auth_data", :force => true do |t|
