@@ -307,7 +307,7 @@ class RequestsController < ApplicationController
 	  e.GenderID am.gender_id
 	end
 	a.RegistrationDate am.registration_date.to_datetime
-	a.LastDenyDate am.last_dany_day.to_datetime
+	a.LastDenyDate am.last_dany_day.to_datetime if am.last_dany_day
 	a.NeedHostel am.need_hostel
 	a.StatusID am.status_id
 	a.SelectedCompetitiveGroups do |scg|
@@ -481,7 +481,7 @@ class RequestsController < ApplicationController
 		else
 		  ed.MiddleEduDiplomaDocument do |medd|
 		    medd.OriginalReceived am.original_received
-		    medd.OriginalReceivedDate am.original_received_date if am.original_received
+		    medd.OriginalReceivedDate am.original_received_date ? am.original_received : am.registration_date
 		    medd.DocumentSeries am.edu_document_series
 		    medd.DocumentNumber am.edu_document_number
 		  end
